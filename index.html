@@ -3,86 +3,280 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
   <meta name="theme-color" content="#080808">
+  <meta name="description" content="Tattoo artist — custom tattoos, blackwork and fine line.">
+
   <title>TATTOO STUDIO</title>
+
   <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
 
-  <header class="hero panel">
-    <div class="hero-bg"></div>
-    <div class="grain"></div>
+  <!-- =====================================================
+       BACKGROUND
+       Фон существует отдельно от всех блоков.
+       ===================================================== -->
+
+  <div class="site-background" aria-hidden="true">
+
+    <div class="background-photo background-photo--one"></div>
+
+    <div class="background-photo background-photo--two"></div>
+
+    <div class="background-dark"></div>
+
+    <div class="background-grain"></div>
+
+  </div>
+
+
+  <!-- =====================================================
+       HEADER
+       ===================================================== -->
+
+  <header class="header">
 
     <nav class="nav">
-      <a class="logo" href="#">TATTOO<br>STUDIO</a>
+
+      <a href="#" class="logo">
+        TATTOO<br>
+        STUDIO
+      </a>
+
       <div class="nav-links">
         <a href="#works">WORKS</a>
         <a href="#about">ABOUT</a>
         <a href="#contact">CONTACT</a>
       </div>
-      <a class="book-small" href="#contact">BOOK</a>
+
+      <a href="#contact" class="book-button">
+        BOOK
+      </a>
+
     </nav>
 
-    <div class="hero-title">
-      <span>01 — TATTOO ARTIST</span>
-      <h1>INK<br>IS<br>PERMANENT.</h1>
+    <div class="header-content">
+
+      <div class="section-label">
+        01 — TATTOO ARTIST
+      </div>
+
+      <h1>
+        INK<br>
+        IS<br>
+        PERMANENT.
+      </h1>
+
     </div>
 
-    <div class="scroll-hint">
+    <div class="scroll-indicator">
       <span>SCROLL</span>
       <i></i>
     </div>
+
   </header>
 
 
-  <main id="works">
-    <section class="work-stack">
-      <div class="global-work-bg"></div>
-      <article class="work-card work-card--dark">
-        <div class="work-bg"></div>
-        <div class="work-overlay"></div>
-        <div class="work-meta">
-          <span>02 — THE PROCESS</span>
-          <span>BLACK / WHITE</span>
-        </div>
-        <div class="work-title">
-          <h2>THE<br>PROCESS</h2>
-          <p>Every line matters.</p>
-        </div>
-      </article>
+  <!-- =====================================================
+       MAIN CONTENT
+       Блоки существуют независимо от фоновых фотографий.
+       ===================================================== -->
 
-      <article class="work-card work-card--black">
-        <div class="fake-space"></div>
-        <div class="work-meta">
-          <span>03 — WORKS</span>
-          <span>COMING SOON</span>
-        </div>
-        <div class="work-title">
-          <h2>YOUR<br>SKIN.<br>MY INK.</h2>
-        </div>
-      </article>
-    </section>
+  <main>
 
-    <section class="about" id="about">
-      <div class="about-number">04</div>
-      <div>
-        <span class="eyebrow">ABOUT THE ARTIST</span>
-        <h2>BLACK INK.<br>PURE FORM.</h2>
-        <p>Custom tattoos, careful lines and a visual language built around contrast, texture and form.</p>
+
+    <!-- ===================================================
+         01
+         =================================================== -->
+
+    <section class="content-card card-01">
+
+      <div class="card-top">
+        <span>01</span>
+        <span>TATTOO ARTIST</span>
       </div>
+
+      <div class="card-content">
+
+        <div class="card-small">
+          CUSTOM TATTOO
+        </div>
+
+        <h2>
+          INK<br>
+          IS<br>
+          PERSONAL.
+        </h2>
+
+        <p>
+          Every tattoo starts with an idea,
+          a line and a story.
+        </p>
+
+      </div>
+
     </section>
 
-    <section class="contact" id="contact">
-      <span class="eyebrow">05 — CONTACT</span>
-      <h2>LET'S MAKE<br>SOMETHING<br>PERMANENT.</h2>
-      <a class="contact-link" href="#">BOOK A SESSION <span>↗</span></a>
-      <div class="socials">
-        <a href="#">INSTAGRAM</a>
-        <a href="#">TELEGRAM</a>
+
+    <!-- ===================================================
+         02
+         =================================================== -->
+
+    <section class="content-card card-02">
+
+      <div class="card-top">
+        <span>02</span>
+        <span>THE PROCESS</span>
       </div>
+
+      <div class="card-content">
+
+        <div class="card-small">
+          BLACK / WHITE
+        </div>
+
+        <h2>
+          THE<br>
+          PROCESS.
+        </h2>
+
+        <p>
+          Every line matters.
+        </p>
+
+      </div>
+
     </section>
+
+
+    <!-- ===================================================
+         03
+         БУДУЩАЯ ГАЛЕРЕЯ
+         =================================================== -->
+
+    <section class="content-card card-03" id="works">
+
+      <div class="card-top">
+        <span>03</span>
+        <span>WORKS</span>
+      </div>
+
+      <div class="card-content">
+
+        <div class="card-small">
+          TATTOO GALLERY
+        </div>
+
+        <h2>
+          YOUR<br>
+          SKIN.<br>
+          MY INK.
+        </h2>
+
+        <p>
+          Gallery coming soon.
+        </p>
+
+      </div>
+
+      <!--
+        СЮДА ПОЗЖЕ ПОСТАВИМ ГАЛЕРЕЮ.
+
+        Фотографии будут загружаться через CSV,
+        а не прописываться вручную в HTML.
+      -->
+
+      <div class="gallery-placeholder">
+        <span>GALLERY</span>
+      </div>
+
+    </section>
+
+
+    <!-- ===================================================
+         04
+         =================================================== -->
+
+    <section class="reveal-section section-04" id="about">
+
+      <div class="reveal-inner">
+
+        <div class="reveal-number">
+          04
+        </div>
+
+        <div class="reveal-content">
+
+          <div class="section-label">
+            ABOUT THE ARTIST
+          </div>
+
+          <h2 class="reveal-title">
+            BLACK INK.<br>
+            PURE FORM.
+          </h2>
+
+          <p class="reveal-text">
+            Custom tattoos, careful lines and a visual
+            language built around contrast, texture and form.
+          </p>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- ===================================================
+         05
+         =================================================== -->
+
+    <section class="reveal-section section-05" id="contact">
+
+      <div class="reveal-inner">
+
+        <div class="reveal-number">
+          05
+        </div>
+
+        <div class="reveal-content">
+
+          <div class="section-label">
+            CONTACT
+          </div>
+
+          <h2 class="reveal-title">
+            LET'S MAKE<br>
+            SOMETHING<br>
+            PERMANENT.
+          </h2>
+
+          <a href="#" class="contact-button">
+            BOOK A SESSION
+            <span>↗</span>
+          </a>
+
+          <div class="socials">
+
+            <a href="#">INSTAGRAM</a>
+            <a href="#">TELEGRAM</a>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
   </main>
 
+
   <script src="script.js"></script>
+
 </body>
 </html>
