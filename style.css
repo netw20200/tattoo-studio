@@ -240,13 +240,15 @@ a {
 
 
 /* =========================================================
-   FIRST THREE CARDS
+   01 → 02 → 03
+   ПАРАЛЛАКС И НАЛОЖЕНИЕ
    ========================================================= */
 
 .content-card {
   position: relative;
 
-  min-height: 100svh;
+  height: 100svh;
+  min-height: 650px;
 
   overflow: hidden;
 
@@ -255,42 +257,35 @@ a {
 
   padding: 28px 32px;
 
-  background: var(--card-bg);
+  background: rgba(8, 8, 8, 0.48);
 
-  border-top: 1px solid var(--card-border);
+  border-top: 1px solid rgba(255,255,255,.14);
 
   backdrop-filter: blur(2px);
   -webkit-backdrop-filter: blur(2px);
-
-  box-shadow:
-    0 -20px 70px rgba(0,0,0,.12);
 
   will-change: transform;
 }
 
 
-/*
-   Наложение первых трёх блоков.
-
-   Они не привязаны к фотографиям.
-*/
-
+/* 01 */
 .card-01 {
   z-index: 3;
-
   margin-top: -10vh;
 }
 
+
+/* 02 заходит на 01 */
 .card-02 {
   z-index: 4;
-
-  margin-top: -28vh;
+  margin-top: -25vh;
 }
 
+
+/* 03 заходит на 02 */
 .card-03 {
   z-index: 5;
-
-  margin-top: -28vh;
+  margin-top: -25vh;
 
   min-height: 110svh;
 }
