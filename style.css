@@ -49,18 +49,24 @@ a {
    ========================================================= */
 
 .site-background {
+/* ================================
+   ОБЩИЙ ФОН САЙТА
+   ================================ */
+
+.site-background {
   position: fixed;
   inset: 0;
-  z-index: -10;
+  z-index: -1;
   overflow: hidden;
   background: #080808;
 }
 
+/* Обе фотографии — отдельные слои */
 .background-photo {
   position: absolute;
-  left: -7%;
-  width: 114%;
-  height: 115vh;
+  left: 0;
+  width: 100%;
+  height: 100vh;
 
   background-position: center;
   background-size: cover;
@@ -69,47 +75,40 @@ a {
   will-change: transform;
 }
 
+/* ПЕРВОЕ ФОТО — ШАПКА */
 .background-photo--one {
   top: 0;
-
-  background-image:
-    url("images/hero.jpg");
-
-  transform: translate3d(0, 0, 0) scale(1.06);
+  background-image: url("images/hero.jpg");
 }
 
+/* ВТОРОЕ ФОТО — ПРОДОЛЖЕНИЕ ФОНА */
 .background-photo--two {
-  top: 75vh;
-
-  background-image:
-    url("images/tattoo-process.jpg");
-
-  transform: translate3d(0, 0, 0) scale(1.06);
-
-  opacity: 0;
+  top: 100vh;
+  background-image: url("images/tattoo-process.jpg");
+  opacity: 1;
 }
 
+/* Затемнение */
 .background-dark {
   position: absolute;
   inset: 0;
+  pointer-events: none;
 
   background:
     linear-gradient(
       180deg,
-      rgba(0, 0, 0, .48),
-      rgba(0, 0, 0, .12) 35%,
-      rgba(0, 0, 0, .58) 100%
+      rgba(0,0,0,.40),
+      rgba(0,0,0,.15) 45%,
+      rgba(0,0,0,.55)
     );
-
-  pointer-events: none;
 }
 
+/* Зернистость */
 .background-grain {
   position: absolute;
   inset: 0;
 
   opacity: .10;
-
   pointer-events: none;
 
   background-image:
@@ -117,7 +116,6 @@ a {
 
   mix-blend-mode: screen;
 }
-
 
 /* =========================================================
    HEADER
