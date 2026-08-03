@@ -111,8 +111,7 @@ a { color: inherit; text-decoration: none; }
 
 .work-stack { position: relative; background: var(--black); }
 .work-card {
-  position: sticky;
-  top: 0;
+  position: relative;
   height: 100svh;
   min-height: 650px;
   overflow: hidden;
