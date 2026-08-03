@@ -1,51 +1,176 @@
-const heroBg = document.querySelector('.hero-bg');
-const workBg = document.querySelector('.work-bg');
-const workCard = document.querySelector('.work-card--black');
+/* =========================================================
+   TATTOO STUDIO
+   PARALLAX + REVEAL ANIMATIONS
+   ========================================================= */
 
-function parallax() {
-  const y = window.scrollY;
+const bgOne = document.querySelector('.background-photo--one');
+const bgTwo = document.querySelector('.background-photo--two');
 
-  // Движение первого фонового изображения
-  if (heroBg) {
-    heroBg.style.transform =
-      `translateY(${Math.min(y * 0.12, 80)}px) scale(1.05)`;
+const cards = document.querySelectorAll('.content-card');
+
+const revealSections = document.querySelectorAll('.reveal-section');
+
+
+/* =========================================================
+   PARALLAX
+   ========================================================= */
+
+let ticking = false;
+
+function updateParallax() {
+
+  const scrollY = window.scrollY;
+
+  /*
+    Фон движется медленнее контента.
+
+    Это и создаёт ощущение глубины.
+  */
+
+  if (bgOne) {
+
+    const moveOne = scrollY * 0.16;
+
+    bgOne.style.transform =
+      `translate3d(0, ${moveOne}px, 0) scale(1.06)`;
   }
 
-  // Движение второго изображения
-  if (workBg && workCard) {
-    const rect = workCard.getBoundingClientRect();
-    const progress = Math.max(
-      0,
-      Math.min(1, -rect.top / window.innerHeight)
-    );
 
-    workBg.style.transform =
-      `translateY(${progress * 55 - 25}px) scale(1.08)`;
-  }
+  if (bgTwo) {
 
-  // Наезд блока 03 — WORKS
-  const heroBg = document.querySelector('.hero-bg');
-const workBg = document.querySelector('.work-bg');
+    /*
+      Второе фото движется немного иначе,
+      чтобы между двумя слоями появился объём.
+    */
 
-function parallax() {
-  const y = window.scrollY;
+    const moveTwo = (scrollY - window.innerHeight * .7) * 0.10;
 
-  if (heroBg) {
-    heroBg.style.transform =
-      `translateY(${Math.min(y * 0.12, 80)}px) scale(1.05)`;
-  }
+    bgTwo.style.transform =
+      `translate3d(0, ${moveTwo}px, 0) scale(1.06)`;
 
-  if (workBg) {
-    const card = workBg.closest('.work-card');
-    const rect = card.getBoundingClientRect();
+    /*
+      Плавно переводим первый фон во второй.
+    */
+
+    const transitionStart = window.innerHeight * .55;
+
+    const transitionEnd = window.innerHeight * 1.25;
+
     const progress =
-      Math.max(0, Math.min(1, -rect.top / window.innerHeight));
+      (scrollY - transitionStart) /
+      (transitionEnd - transitionStart);
 
-    workBg.style.transform =
-      `translateY(${progress * 55 - 25}px) scale(1.08)`;
+    const opacity =
+      Math.max(0, Math.min(1, progress));
+
+    bgTwo.style.opacity = opacity;
+  }
+
+
+  /*
+    Первые три карточки получают
+    очень лёгкое дополнительное движение.
+
+    Оно небольшое специально,
+    чтобы не было ощущения дёрганья.
+  */
+
+  cards.forEach((card, index) => {
+
+    const rect = card.getBoundingClientRect();
+
+    const center =
+      rect.top + rect.height / 2;
+
+    const viewportCenter =
+      window.innerHeight / 2;
+
+    const distance =
+      center - viewportCenter;
+
+    let strength = 0;
+
+    if (index === 0) {
+      strength = 0.025;
+    }
+
+    if (index === 1) {
+      strength = 0.04;
+    }
+
+    if (index === 2) {
+      strength = 0.055;
+    }
+
+    const movement =
+      distance * strength;
+
+    card.style.transform =
+      `translate3d(0, ${movement}px, 0)`;
+  }
+
+
+  ticking = false;
+}
+
+
+function requestParallax() {
+
+  if (!ticking) {
+
+    window.requestAnimationFrame(updateParallax);
+
+    ticking = true;
   }
 }
 
-window.addEventListener('scroll', parallax, { passive: true });
-parallax();
 
+window.addEventListener(
+  'scroll',
+  requestParallax,
+  { passive: true }
+);
+
+window.addEventListener(
+  'resize',
+  requestParallax
+);
+
+updateParallax();
+
+
+/* =========================================================
+   04 / 05 REVEAL
+   ========================================================= */
+
+const revealObserver =
+  new IntersectionObserver(
+
+    (entries) => {
+
+      entries.forEach((entry) => {
+
+        if (entry.isIntersecting) {
+
+          entry.target.classList.add('is-visible');
+
+        }
+
+      });
+
+    },
+
+    {
+      threshold: 0.18,
+
+      rootMargin: '0px 0px -8% 0px'
+    }
+
+  );
+
+
+revealSections.forEach((section) => {
+
+  revealObserver.observe(section);
+
+});
