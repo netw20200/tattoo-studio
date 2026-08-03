@@ -139,6 +139,21 @@ a { color: inherit; text-decoration: none; }
 background: transparent;
 backdrop-filter: blur(3px);
 -webkit-backdrop-filter: blur(3px);}
+.work-card--black {
+    position: relative;
+    z-index: 5;
+    min-height: 100vh;
+    margin-top: -12vh;
+    background: transparent;
+}
+
+.work-card--black .fake-space {
+    background:
+        radial-gradient(circle at 70% 30%, rgba(29,29,29,.5) 0, transparent 32%),
+        rgba(8,8,8,.45);
+    backdrop-filter: blur(3px);
+    -webkit-backdrop-filter: blur(3px);
+}
 .work-bg {
   position: absolute;
   inset: -7%;
