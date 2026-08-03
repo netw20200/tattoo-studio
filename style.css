@@ -243,3 +243,15 @@ backdrop-filter: blur(4px);
   .about h2, .contact h2 { font-size: 15vw; }
   .contact { padding: 12vh 20px 30px; }
 }
+.global-work-bg {
+  position: absolute;
+  inset: 0;
+  background: url("images/tattoo-process.jpg") center center / cover no-repeat;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.work-stack {
+  position: relative;
+  background: transparent;
+}
