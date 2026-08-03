@@ -25,17 +25,14 @@ function parallax() {
 
   // Наезд блока 03 — WORKS
   if (workCard) {
-    const rect = workCard.getBoundingClientRect();
+  const rect = workCard.getBoundingClientRect();
 
-    const progress = Math.max(
-      0,
-      Math.min(1, (window.innerHeight - rect.top) / window.innerHeight)
-    );
+  if (rect.top < window.innerHeight && rect.bottom > 0) {
+    const move = Math.max(0, window.innerHeight - rect.top);
 
     workCard.style.transform =
-      `translateY(${(1 - progress) * 18}vh)`;
+      `translateY(${-move * 0.18}px)`;
   }
 }
-
 window.addEventListener('scroll', parallax, { passive: true });
 parallax();
