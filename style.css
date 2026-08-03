@@ -135,7 +135,10 @@ a { color: inherit; text-decoration: none; }
   overflow: hidden;
 }
 .work-card--dark { z-index: 2; }
-.work-card--black { z-index: 3; background: #080808; }
+.work-card--black { z-index: 3; 
+background: rgba(8, 8, 8, 0.62);
+backdrop-filter: blur(3px);
+-webkit-backdrop-filter: blur(3px);}
 .work-bg {
   position: absolute;
   inset: -7%;
