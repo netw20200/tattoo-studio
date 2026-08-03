@@ -176,11 +176,13 @@ backdrop-filter: blur(3px);
 }
 .work-title p { color: #bbb; margin-top: 22px; }
 .fake-space {
-  position: absolute;
-  inset: 0;
-  background:
-    radial-gradient(circle at 70% 30%, #1d1d1d 0, transparent 32%),
-    #080808;
+    position: absolute;
+    inset: 0;
+    background:
+        radial-gradient(circle at 70% 30%, rgba(29,29,29,.5) 0, transparent 32%),
+        rgba(8,8,8,.45);
+    backdrop-filter: blur(3px);
+    -webkit-backdrop-filter: blur(3px);
 }
 
 .about {
