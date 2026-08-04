@@ -100,6 +100,22 @@
             speed: 4
         });
     </script>
+<script>
+    const parallaxContent = document.querySelector('.content--parallax');
+    const section = parallaxContent?.closest('section');
 
+    if (parallaxContent && section) {
+        window.addEventListener('scroll', () => {
+            const rect = section.getBoundingClientRect();
+            const windowHeight = window.innerHeight;
+
+            if (rect.top < windowHeight && rect.bottom > 0) {
+                const speed = 0.35;
+                const yPos = (rect.top - windowHeight) * speed * -1;
+                parallaxContent.style.transform = `translateY(${yPos}px)`;
+            }
+        });
+    }
+</script>
 </body>
 </html>
