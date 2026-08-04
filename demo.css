@@ -199,3 +199,7 @@ a.a--no-weight {
     background-color: #000;
     background-position: center center;
 }
+.content--parallax {
+    transition: transform 0.1s linear;
+    will-change: transform;
+}
