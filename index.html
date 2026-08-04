@@ -110,8 +110,9 @@
             const windowHeight = window.innerHeight;
 
             if (rect.top < windowHeight && rect.bottom > 0) {
-                const speed = 0.35;
-                const yPos = (rect.top - windowHeight) * speed * -1;
+                const speed = 0.15;
+                let yPos = (rect.top - windowHeight * 0.3) * speed * -1;
+                yPos = Math.max(-80, Math.min(80, yPos));
                 parallaxContent.style.transform = `translateY(${yPos}px)`;
             }
         });
