@@ -3,278 +3,35 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-  <meta name="theme-color" content="#080808">
-  <meta name="description" content="Tattoo artist — custom tattoos, blackwork and fine line.">
-
-  <title>TATTOO STUDIO</title>
-
+  <title>Tattoo Studio</title>
   <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
-  <!-- =====================================================
-       BACKGROUND
-       Фон существует отдельно от всех блоков.
-       ===================================================== -->
+  <!-- ОТДЕЛЬНЫЙ ФОН САЙТА -->
+  <div class="parallax-bg">
 
-  <div class="site-background" aria-hidden="true">
+    <div
+      class="parallax-layer bg-photo bg-photo-1"
+      data-parallax
+      data-speed="0.15">
+    </div>
 
-    <div class="background-photo background-photo--one"></div>
-
-    <div class="background-photo background-photo--two"></div>
-
-    <div class="background-dark"></div>
-
-    <div class="background-grain"></div>
+    <div
+      class="parallax-layer bg-photo bg-photo-2"
+      data-parallax
+      data-speed="0.15">
+    </div>
 
   </div>
 
-
-  <!-- =====================================================
-       HEADER
-       ===================================================== -->
-
-  <header class="header">
-
-    <nav class="nav">
-
-      <a href="#" class="logo">
-        TATTOO<br>
-        STUDIO
-      </a>
-
-      <div class="nav-links">
-        <a href="#works">WORKS</a>
-        <a href="#about">ABOUT</a>
-        <a href="#contact">CONTACT</a>
-      </div>
-
-      <a href="#contact" class="book-button">
-        BOOK
-      </a>
-
-    </nav>
-
-    <div class="header-content">
-
-      <div class="section-label">
-        01 — TATTOO ARTIST
-      </div>
-
-      <h1>
-        INK<br>
-        IS<br>
-        PERMANENT.
-      </h1>
-
+  <!-- Временно только для проверки прокрутки -->
+  <main class="test-space">
+    <div class="test-title">
+      PARALLAX TEST
     </div>
-
-    <div class="scroll-indicator">
-      <span>SCROLL</span>
-      <i></i>
-    </div>
-
-  </header>
-
-
-  <!-- =====================================================
-       MAIN CONTENT
-       Блоки существуют независимо от фоновых фотографий.
-       ===================================================== -->
-
-  <main>
-
-
-    <!-- ===================================================
-         01
-         =================================================== -->
-
-    <section class="content-card card-01">
-
-      <div class="card-top">
-        <span>01</span>
-        <span>TATTOO ARTIST</span>
-      </div>
-
-      <div class="card-content">
-
-        <div class="card-small">
-          CUSTOM TATTOO
-        </div>
-
-        <h2>
-          INK<br>
-          IS<br>
-          PERSONAL.
-        </h2>
-
-        <p>
-          Every tattoo starts with an idea,
-          a line and a story.
-        </p>
-
-      </div>
-
-    </section>
-
-
-    <!-- ===================================================
-         02
-         =================================================== -->
-
-    <section class="content-card card-02">
-
-      <div class="card-top">
-        <span>02</span>
-        <span>THE PROCESS</span>
-      </div>
-
-      <div class="card-content">
-
-        <div class="card-small">
-          BLACK / WHITE
-        </div>
-
-        <h2>
-          THE<br>
-          PROCESS.
-        </h2>
-
-        <p>
-          Every line matters.
-        </p>
-
-      </div>
-
-    </section>
-
-
-    <!-- ===================================================
-         03
-         БУДУЩАЯ ГАЛЕРЕЯ
-         =================================================== -->
-
-    <section class="content-card card-03" id="works">
-
-      <div class="card-top">
-        <span>03</span>
-        <span>WORKS</span>
-      </div>
-
-      <div class="card-content">
-
-        <div class="card-small">
-          TATTOO GALLERY
-        </div>
-
-        <h2>
-          YOUR<br>
-          SKIN.<br>
-          MY INK.
-        </h2>
-
-        <p>
-          Gallery coming soon.
-        </p>
-
-      </div>
-
-      <!--
-        СЮДА ПОЗЖЕ ПОСТАВИМ ГАЛЕРЕЮ.
-
-        Фотографии будут загружаться через CSV,
-        а не прописываться вручную в HTML.
-      -->
-
-      <div class="gallery-placeholder">
-        <span>GALLERY</span>
-      </div>
-
-    </section>
-
-
-    <!-- ===================================================
-         04
-         =================================================== -->
-
-    <section class="reveal-section section-04" id="about">
-
-      <div class="reveal-inner">
-
-        <div class="reveal-number">
-          04
-        </div>
-
-        <div class="reveal-content">
-
-          <div class="section-label">
-            ABOUT THE ARTIST
-          </div>
-
-          <h2 class="reveal-title">
-            BLACK INK.<br>
-            PURE FORM.
-          </h2>
-
-          <p class="reveal-text">
-            Custom tattoos, careful lines and a visual
-            language built around contrast, texture and form.
-          </p>
-
-        </div>
-
-      </div>
-
-    </section>
-
-
-    <!-- ===================================================
-         05
-         =================================================== -->
-
-    <section class="reveal-section section-05" id="contact">
-
-      <div class="reveal-inner">
-
-        <div class="reveal-number">
-          05
-        </div>
-
-        <div class="reveal-content">
-
-          <div class="section-label">
-            CONTACT
-          </div>
-
-          <h2 class="reveal-title">
-            LET'S MAKE<br>
-            SOMETHING<br>
-            PERMANENT.
-          </h2>
-
-          <a href="#" class="contact-button">
-            BOOK A SESSION
-            <span>↗</span>
-          </a>
-
-          <div class="socials">
-
-            <a href="#">INSTAGRAM</a>
-            <a href="#">TELEGRAM</a>
-
-          </div>
-
-        </div>
-
-      </div>
-
-    </section>
-
-
   </main>
-
 
   <script src="script.js"></script>
 
