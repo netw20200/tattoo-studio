@@ -205,39 +205,63 @@ a.a--no-weight {
     position: relative;
     z-index: 2;
 }
-/* ========== BLOBBBY MENU ========== */
+
+  /* ========== BLOBBBY MENU (fixed) ========== */
 :root {
   --menu-speed: 0.85s;
-  --menu-size: 28;
   --menu-ease: cubic-bezier(0.175, 0.885, 0.32, 1.275);
-  --menu-color: #2a2a2a; /* тёмно-серый */
+  --menu-color: #2a2a2a;
 }
 
 .menu {
   position: fixed;
-  top: 0;
-  right: 0;
+  top: 20px;
+  right: 20px;
   z-index: 9999;
+  width: 50px;
+  height: 50px;
 }
 
 .menu__toggle {
   opacity: 0;
   position: absolute;
+  pointer-events: none;
 }
 
-.menu__toggle:checked \~ .menu__content .menu__item {
-  --active-x: var(--x);
-  --active-y: var(--y);
-  --scale: 1;
+/* Кнопка бургера */
+.menu__toggle-label {
+  cursor: pointer;
+  width: 50px;
+  height: 50px;
+  display: block;
+  position: absolute;
+  top: 0;
+  right: 0;
+  z-index: 5;
+  border-radius: 50%;
+  background: rgba(0,0,0,0.6);
 }
 
-.menu__toggle:checked \~ .menu__toggle-label:not(.menu__toggle-label--closer) {
-  --clip: circle(150% at 100% 0%);
-  height: 100vh;
-  width: 100vw;
-  backdrop-filter: blur(8px);
-  background: rgba(0, 0, 0, 0.4);
+.menu__toggle-label--closer {
+  background: transparent;
+  z-index: 6;
 }
+
+/* Иконки */
+.menu__icon {
+  width: 26px;
+  height: 26px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(var(--scale, 1));
+  fill: #fff;
+  transition: all var(--menu-speed) var(--menu-ease);
+  pointer-events: none;
+}
+
+.menu__icon:nth-of-type(1) { --scale: 1; }
+.menu__icon:nth-of-type(2) { --scale: 0; }
 
 .menu__toggle:checked \~ .menu__toggle-label .menu__icon:nth-of-type(1) {
   --scale: 0;
@@ -246,54 +270,31 @@ a.a--no-weight {
   --scale: 1;
 }
 
-.menu__toggle-label {
-  cursor: pointer;
-  height: calc(var(--menu-size) * 0.55vmin);
-  width: calc(var(--menu-size) * 0.55vmin);
-  display: block;
-  --clip: circle(0% at 100% 0%);
-  clip-path: var(--clip);
-  -webkit-clip-path: var(--clip);
-  position: absolute;
+/* Затемнение фона при открытии */
+.menu__toggle:checked \~ .menu__toggle-label:not(.menu__toggle-label--closer) {
+  position: fixed;
   top: 0;
   right: 0;
-  transition: backdrop-filter var(--menu-speed) var(--menu-ease),
-              clip-path 0s,
-              -webkit-clip-path 0s;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.55);
+  backdrop-filter: blur(6px);
+  border-radius: 0;
 }
 
-.menu__toggle-label--closer {
-  z-index: 3;
-  background: transparent;
-}
-
-.menu__icon {
-  --scale: 1;
-  height: calc(var(--menu-size) * 0.28vmin);
-  width: calc(var(--menu-size) * 0.28vmin);
-  position: absolute;
-  top: 50%;
-  right: 50%;
-  transform: translate(50%, -50%) scale(var(--scale));
-  fill: #fff;
-  transition: all var(--menu-speed) var(--menu-ease);
-}
-
-.menu__icon:nth-of-type(2) {
-  --scale: 0;
-}
-
+/* Контент меню */
 .menu__content {
   margin: 0;
   padding: 0;
   list-style: none;
   filter: url(#goo);
-  position: absolute;
+  position: fixed;
   top: 0;
   right: 0;
-  height: 0;
   width: 0;
-  z-index: 2;
+  height: 0;
+  z-index: 4;
+  pointer-events: none;
 }
 
 .menu__content::after {
@@ -301,11 +302,10 @@ a.a--no-weight {
   background: var(--menu-color);
   border-radius: 50%;
   position: absolute;
-  height: calc(var(--menu-size) * 1vmin);
-  width: calc(var(--menu-size) * 1vmin);
-  top: 0;
-  right: 0;
-  transform: translate(30%, -30%);
+  width: 50px;
+  height: 50px;
+  top: 20px;
+  right: 20px;
 }
 
 .menu__item {
@@ -314,34 +314,37 @@ a.a--no-weight {
   display: flex;
   align-items: center;
   justify-content: center;
-  height: calc(var(--menu-size) * 1.1vmin);
-  width: calc(var(--menu-size) * 1.1vmin);
+  width: 90px;
+  height: 90px;
   position: absolute;
-  top: calc(var(--active-y, 0) * 1vh);
-  right: calc(var(--active-x, 0) * 1vw);
-  transform: translate(50%, -50%) scale(var(--scale, 0.6));
-  transition: all var(--menu-speed) calc(var(--delay, 0) * 1s) var(--menu-ease);
-  overflow: hidden;
+  top: 20px;
+  right: 20px;
+  transform: scale(0.5);
+  opacity: 0;
+  transition: all var(--menu-speed) var(--menu-ease);
+  pointer-events: none;
 }
 
-.menu__item:nth-of-type(1) { --delay: 0.1; --x: 18; --y: 18; }
-.menu__item:nth-of-type(2) { --delay: 0.2; --x: 38; --y: 28; }
-.menu__item:nth-of-type(3) { --delay: 0.3; --x: 22; --y: 48; }
-.menu__item:nth-of-type(4) { --delay: 0.4; --x: 42; --y: 58; }
+.menu__toggle:checked \~ .menu__content .menu__item {
+  opacity: 1;
+  transform: scale(1);
+  pointer-events: auto;
+}
+
+.menu__item:nth-of-type(1) { transition-delay: 0.05s; top: 100px; right: 30px; }
+.menu__item:nth-of-type(2) { transition-delay: 0.12s; top: 160px; right: 110px; }
+.menu__item:nth-of-type(3) { transition-delay: 0.19s; top: 250px; right: 40px; }
+.menu__item:nth-of-type(4) { transition-delay: 0.26s; top: 320px; right: 130px; }
 
 .menu__link {
-  color: #e63946; /* красный текст */
+  color: #e63946;
   text-decoration: none;
   font-weight: 700;
-  font-size: clamp(14px, 2.8vmin, 22px);
-  letter-spacing: 1px;
+  font-size: 13px;
+  letter-spacing: 0.5px;
   text-transform: uppercase;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: 100%;
-  width: 100%;
-  transition: color 0.2s;
+  text-align: center;
+  line-height: 1.2;
 }
 
 .menu__link:hover {
