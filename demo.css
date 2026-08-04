@@ -202,4 +202,6 @@ a.a--no-weight {
 .content--parallax {
     transition: transform 0.1s linear;
     will-change: transform;
+    position: relative;
+    z-index: 2;
 }
