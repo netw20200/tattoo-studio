@@ -1,39 +1,40 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="ru">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Tattoo Studio</title>
+  <title>Parallax Test</title>
+
   <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
-  <!-- ОТДЕЛЬНЫЙ ФОН САЙТА -->
-  <div class="parallax-bg">
-
-    <div
-      class="parallax-layer bg-photo bg-photo-1"
-      data-parallax
-      data-speed="0.15">
+  <section class="parallax-section">
+    <div class="content">
+      <div class="number">01</div>
+      <h1>PARALLAX</h1>
     </div>
 
     <div
-      class="parallax-layer bg-photo bg-photo-2"
-      data-parallax
-      data-speed="0.15">
+      class="parallax"
+      data-parallax-image="images/hero.jpg">
     </div>
+  </section>
 
-  </div>
 
-  <!-- Временно только для проверки прокрутки -->
-  <main class="test-space">
-    <div class="test-title">
-      PARALLAX TEST
-    </div>
-  </main>
+  <section class="space">
+    <h2>SCROLL</h2>
+  </section>
 
-  <script src="script.js"></script>
+
+  <script src="https://unpkg.com/universal-parallax@1.3.2/dist/universal-parallax.min.js"></script>
+
+  <script>
+    new universalParallax().init({
+      speed: 4
+    });
+  </script>
 
 </body>
 </html>
