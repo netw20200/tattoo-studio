@@ -119,3 +119,6 @@ h1 {
   font-size: 40px;
   letter-spacing: .2em;
 }
+.second-parallax {
+  height: 100vh;
+}
