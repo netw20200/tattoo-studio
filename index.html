@@ -53,7 +53,7 @@
 
 
     <section class="container container--full">
-        <div class="content content--parallax">
+        <div class="content" data-aos="fade-up" data-aos-duration="1000" data-aos-offset="100">
             <h2>Universal Parallax</h2>
 
             <p>
@@ -101,23 +101,13 @@
             speed: 4
         });
     </script>
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 <script>
-    const parallaxContent = document.querySelector('.content--parallax');
-    const section = parallaxContent?.closest('section');
-
-    if (parallaxContent && section) {
-        window.addEventListener('scroll', () => {
-            const rect = section.getBoundingClientRect();
-            const windowHeight = window.innerHeight;
-
-            if (rect.top < windowHeight && rect.bottom > 0) {
-                const speed = 0.15;
-                let yPos = (rect.top - windowHeight * 0.3) * speed * -1;
-                yPos = Math.max(-80, Math.min(80, yPos));
-                parallaxContent.style.transform = `translateY(${yPos}px)`;
-            }
-        });
-    }
+    AOS.init({
+        once: true,
+        duration: 1000,
+        offset: 100
+    });
 </script>
 </body>
 </html>
