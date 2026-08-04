@@ -194,3 +194,8 @@ a.a--no-weight {
 		display: inline;
 	}
 }
+.parallax--contain {
+    background-size: contain !important;
+    background-color: #000;
+    background-position: center center;
+}
