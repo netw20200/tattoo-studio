@@ -1,713 +1,112 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap');
-
-
-/* =========================================================
-   ОСНОВА
-   ========================================================= */
-
-:root {
-  --black: #080808;
-  --white: #f1f1ef;
-  --gray: #a4a4a0;
-
-  --card-bg: rgba(8, 8, 8, 0.48);
-  --border: rgba(255, 255, 255, 0.13);
-}
-
 * {
   box-sizing: border-box;
 }
 
-html {
-  scroll-behavior: smooth;
+html,
+body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  min-height: 100%;
 }
 
 body {
-  margin: 0;
-  background: var(--black);
-  color: var(--white);
-
-  font-family: Inter, Arial, sans-serif;
-
+  background: #080808;
+  color: #fff;
   overflow-x: hidden;
 }
 
-a {
-  color: inherit;
-  text-decoration: none;
-}
 
+/* =========================================
+   ОБЩИЙ ФОН
+   ========================================= */
 
-/* =========================================================
-   ФОН САЙТА
-   ДВА ФОТО НЕ ПРИВЯЗАНЫ К БЛОКАМ
-   ========================================================= */
-
-.site-background {
-  position: absolute;
-
-  top: 0;
-  left: 0;
+.parallax-bg {
+  position: fixed;
+  inset: 0;
 
   width: 100%;
-  height: 200vh;
-
-  z-index: -1;
+  height: 100vh;
 
   overflow: hidden;
+
+  z-index: 0;
 
   background: #080808;
-
-  pointer-events: none;
 }
 
 
-/* ПЕРВАЯ ФОТОГРАФИЯ */
+/* =========================================
+   СЛОИ ФОТО
+   ========================================= */
 
-.background-photo--one {
+.parallax-layer {
   position: absolute;
 
-  top: 0;
   left: 0;
-
   width: 100%;
-  height: 100vh;
-
-  background-image: url("images/hero.jpg");
-
-  background-position: center;
-  background-size: cover;
-  background-repeat: no-repeat;
-}
-
-
-/* ВТОРАЯ ФОТОГРАФИЯ */
-
-.background-photo--two {
-  position: absolute;
-
-  top: 100vh;
-  left: 0;
-
-  width: 100%;
-  height: 100vh;
-
-  background-image: url("images/tattoo-process.jpg");
-
-  background-position: center;
-  background-size: cover;
-  background-repeat: no-repeat;
-
-  opacity: 1;
-}
-
-
-/* Затемнение */
-
-.background-dark {
-  position: absolute;
-
-  inset: 0;
-
-  background:
-    linear-gradient(
-      180deg,
-      rgba(0, 0, 0, .42),
-      rgba(0, 0, 0, .12) 40%,
-      rgba(0, 0, 0, .55)
-    );
-
-  pointer-events: none;
-}
-
-
-/* ЗЕРНО */
-
-.background-grain {
-  position: absolute;
-
-  inset: 0;
-
-  opacity: .10;
-
-  pointer-events: none;
-
-  background-image:
-    url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.7'/%3E%3C/svg%3E");
-
-  mix-blend-mode: screen;
-}
-
-
-/* =========================================================
-   HEADER
-   ========================================================= */
-
-.header {
-  position: relative;
-
-  z-index: 2;
-
-  height: 100svh;
-  min-height: 650px;
-
-  overflow: hidden;
-}
-
-
-.nav {
-  position: absolute;
-
-  top: 0;
-  left: 0;
-  right: 0;
-
-  z-index: 20;
-
-  padding: 26px 32px;
-
-  display: flex;
-  align-items: flex-start;
-  justify-content: space-between;
-
-  font-size: 11px;
-
-  letter-spacing: .13em;
-
-  font-weight: 700;
-}
-
-
-.logo {
-  line-height: .9;
-
-  font-size: 15px;
-}
-
-
-.nav-links {
-  display: flex;
-
-  gap: 28px;
-}
-
-
-.nav-links a {
-  transition: opacity .3s ease;
-}
-
-
-.nav-links a:hover {
-  opacity: .55;
-}
-
-
-.book-button {
-  border: 1px solid rgba(255,255,255,.55);
-
-  padding: 10px 15px;
-
-  margin-top: -9px;
-
-  transition:
-    background .3s ease,
-    color .3s ease;
-}
-
-
-.book-button:hover {
-  background: var(--white);
-
-  color: var(--black);
-}
-
-
-.header-content {
-  position: absolute;
-
-  left: 7vw;
-  bottom: 10vh;
-
-  z-index: 10;
-}
-
-
-.section-label {
-  font-size: 10px;
-
-  letter-spacing: .18em;
-
-  font-weight: 700;
-}
-
-
-.header h1 {
-  margin: 16px 0 0;
-
-  font-size: clamp(58px, 9vw, 150px);
-
-  line-height: .82;
-
-  letter-spacing: -.075em;
-
-  font-weight: 900;
-}
-
-
-.scroll-indicator {
-  position: absolute;
-
-  z-index: 10;
-
-  right: 32px;
-  bottom: 34px;
-
-  display: flex;
-  align-items: center;
-
-  gap: 12px;
-
-  font-size: 9px;
-
-  letter-spacing: .18em;
-}
-
-
-.scroll-indicator i {
-  display: block;
-
-  width: 45px;
-  height: 1px;
-
-  background: currentColor;
-}
-
-
-/* =========================================================
-   ПЕРВЫЕ ТРИ БЛОКА
-   ========================================================= */
-
-.content-card {
-  position: relative;
-
-  min-height: 100svh;
-
-  overflow: hidden;
-
-  display: flex;
-  flex-direction: column;
-
-  padding: 28px 32px;
-
-  /*
-    Полупрозрачность.
-    Через блоки видно фон.
-  */
-
-  background: var(--card-bg);
-
-  border-top: 1px solid var(--border);
-
-  backdrop-filter: blur(2px);
-  -webkit-backdrop-filter: blur(2px);
-
-  box-shadow:
-    0 -25px 80px rgba(0,0,0,.16);
 
   will-change: transform;
 }
 
 
-/* =========================================================
-   01
-   ========================================================= */
+/* ПЕРВОЕ ФОТО */
 
-.card-01 {
-  z-index: 3;
+.bg-photo-1 {
+  top: 0;
 
-  margin-top: -10vh;
+  height: 100vh;
+
+  background-image: url("images/hero.jpg");
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
 }
 
 
-/* =========================================================
-   02
-   ========================================================= */
+/* ВТОРОЕ ФОТО */
 
-.card-02 {
-  z-index: 4;
+.bg-photo-2 {
+  top: 100vh;
 
-  margin-top: -25vh;
+  height: 100vh;
+
+  background-image: url("images/tattoo-process.jpg");
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
 }
 
 
-/* =========================================================
-   03
-   ========================================================= */
+/* =========================================
+   ВРЕМЕННАЯ ОБЛАСТЬ ДЛЯ ПРОКРУТКИ
+   ========================================= */
 
-.card-03 {
-  z-index: 5;
+.test-space {
+  position: relative;
 
-  margin-top: -25vh;
+  z-index: 2;
 
-  min-height: 110svh;
+  min-height: 300vh;
+
+  background: transparent;
 }
 
 
-/* =========================================================
-   ВЕРХ КАРТОЧЕК
-   ========================================================= */
+/* Временная надпись */
 
-.card-top {
-  display: flex;
+.test-title {
+  position: absolute;
 
-  justify-content: space-between;
+  top: 45vh;
+  left: 50%;
 
-  font-size: 9px;
+  transform: translateX(-50%);
 
-  letter-spacing: .16em;
+  font-family: Arial, sans-serif;
 
-  color: rgba(255,255,255,.88);
-}
-
-
-/* =========================================================
-   ТЕКСТ КАРТОЧЕК
-   ========================================================= */
-
-.card-content {
-  margin-top: auto;
-
-  padding-bottom: 6vh;
-}
-
-
-.card-small {
-  margin-bottom: 16px;
-
-  font-size: 10px;
-
-  letter-spacing: .18em;
-
-  font-weight: 700;
+  font-size: 12px;
+  letter-spacing: .25em;
 
   opacity: .8;
 }
-
-
-.content-card h2 {
-  margin: 0;
-
-  font-size: clamp(55px, 9vw, 145px);
-
-  line-height: .82;
-
-  letter-spacing: -.075em;
-
-  font-weight: 900;
-}
-
-
-.content-card p {
-  margin: 24px 0 0;
-
-  color: #bdbdb8;
-
-  font-size: 14px;
-}
-
-
-/* =========================================================
-   ЗАГОТОВКА ПОД БУДУЩУЮ ГАЛЕРЕЮ 03
-   ========================================================= */
-
-.gallery-placeholder {
-  position: absolute;
-
-  right: 5vw;
-  top: 18vh;
-
-  width: 25vw;
-  height: 30vh;
-
-  display: flex;
-
-  align-items: center;
-  justify-content: center;
-
-  border: 1px solid rgba(255,255,255,.16);
-
-  background: rgba(0,0,0,.12);
-
-  font-size: 9px;
-
-  letter-spacing: .2em;
-
-  opacity: .55;
-}
-
-
-/* =========================================================
-   04 / 05
-   ========================================================= */
-
-.reveal-section {
-  position: relative;
-
-  z-index: 6;
-
-  min-height: 100svh;
-
-  display: flex;
-
-  align-items: center;
-
-  padding: 14vh 7vw;
-
-  /*
-    Также полупрозрачные.
-  */
-
-  background: rgba(8,8,8,.52);
-
-  border-top: 1px solid rgba(255,255,255,.12);
-
-  backdrop-filter: blur(3px);
-  -webkit-backdrop-filter: blur(3px);
-
-  overflow: hidden;
-
-  box-shadow:
-    0 -30px 100px rgba(0,0,0,.18);
-}
-
-
-/* =========================================================
-   ВНУТРЕННОСТИ 04 / 05
-   ========================================================= */
-
-.reveal-inner {
-  width: 100%;
-
-  display: grid;
-
-  grid-template-columns: 1fr 3fr;
-
-  gap: 5vw;
-
-  transform: translate3d(0, 0, 0);
-
-  opacity: 1;
-}
-
-
-/* =========================================================
-   НОМЕР
-   ========================================================= */
-
-.reveal-number {
-  color: var(--gray);
-
-  font-size: 12px;
-}
-
-
-/* =========================================================
-   ТЕКСТ
-   ========================================================= */
-
-.reveal-content {
-  overflow: hidden;
-}
-
-
-.reveal-title {
-  margin: 22px 0 35px;
-
-  font-size: clamp(48px, 8vw, 125px);
-
-  line-height: .86;
-
-  letter-spacing: -.07em;
-}
-
-
-.reveal-text {
-  max-width: 520px;
-
-  color: #a9a9a5;
-
-  line-height: 1.7;
-
-  font-size: 15px;
-}
-
-
-/* =========================================================
-   CONTACT
-   ========================================================= */
-
-.section-05 {
-  min-height: 100svh;
-
-  padding-bottom: 50px;
-}
-
-
-.section-05 .reveal-title {
-  margin-bottom: 45px;
-}
-
-
-.contact-button {
-  display: inline-flex;
-
-  align-items: center;
-
-  width: fit-content;
-
-  padding-bottom: 12px;
-
-  border-bottom: 1px solid rgba(255,255,255,.7);
-
-  font-size: 12px;
-
-  letter-spacing: .14em;
-
-  font-weight: 800;
-}
-
-
-.contact-button span {
-  margin-left: 35px;
-
-  font-size: 18px;
-}
-
-
-.socials {
-  display: flex;
-
-  gap: 25px;
-
-  margin-top: 70px;
-
-  font-size: 10px;
-
-  letter-spacing: .15em;
-
-  font-weight: 700;
-}
-
-
-/* =========================================================
-   МОБИЛЬНАЯ ВЕРСИЯ
-   ========================================================= */
-
-@media (max-width: 700px) {
-
-  .nav {
-    padding: 20px;
-  }
-
-
-  .nav-links {
-    display: none;
-  }
-
-
-  .book-button {
-    margin-top: -6px;
-  }
-
-
-  .header-content {
-    left: 20px;
-
-    bottom: 11vh;
-  }
-
-
-  .header h1 {
-    font-size: 18vw;
-  }
-
-
-  .scroll-indicator {
-    right: 20px;
-
-    bottom: 24px;
-  }
-
-
-  /* Первые три */
-
-  .content-card {
-    min-height: 100svh;
-
-    padding: 20px;
-  }
-
-
-  .card-01 {
-    margin-top: -8vh;
-  }
-
-
-  .card-02 {
-    margin-top: -22vh;
-  }
-
-
-  .card-03 {
-    margin-top: -22vh;
-
-    min-height: 110svh;
-  }
-
-
-  .content-card h2 {
-    font-size: 17vw;
-  }
-
-
-  .card-content {
-    padding-bottom: 8vh;
-  }
-
-
-  .gallery-placeholder {
-    display: none;
-  }
-
-
-  /* 04 / 05 */
-
-  .reveal-section {
-    min-height: 100svh;
-
-    padding: 12vh 20px;
-  }
-
-
-  .reveal-inner {
-    grid-template-columns: 1fr;
-
-    gap: 35px;
-  }
-
-
-  .reveal-title {
-    font-size: 15vw;
-  }
-
-
-  .reveal-text {
-    font-size: 14px;
-  }
-
-
-  .socials {
-    flex-wrap: wrap;
-  }
-
-   }
