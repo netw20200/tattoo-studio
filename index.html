@@ -122,10 +122,11 @@
         offset: 100
     });
 </script>
-    <script>
+<script>
   const menu = document.querySelector('.menu');
   const btn = document.getElementById('menuBtn');
   const overlay = document.getElementById('menuOverlay');
+  const links = document.querySelectorAll('.menu__link');
 
   btn.addEventListener('click', () => {
     menu.classList.toggle('is-open');
@@ -134,6 +135,13 @@
   overlay.addEventListener('click', () => {
     menu.classList.remove('is-open');
   });
-    </script>
+
+  // Закрываем меню при клике на пункт
+  links.forEach(link => {
+    link.addEventListener('click', () => {
+      menu.classList.remove('is-open');
+    });
+  });
+</script>
 </body>
 </html>
