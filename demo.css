@@ -464,3 +464,31 @@ a.a--no-weight {
 .lightbox__close:hover {
   color: #e63946;
 }
+/* ========== CONTACT ICONS ========== */
+.contact-icons {
+  display: flex;
+  justify-content: center;
+  gap: 18px;
+  margin-top: 25px;
+  flex-wrap: wrap;
+}
+
+.contact-icon {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  font-size: 20px;
+  transition: all 0.3s ease;
+  text-decoration: none;
+}
+
+.contact-icon:hover {
+  background: #e63946;
+  color: #fff;
+  transform: translateY(-3px);
+}
