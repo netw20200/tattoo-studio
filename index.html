@@ -11,17 +11,15 @@
 </head>
 
 <body>
-<!-- BLOBBBY MENU -->
+<!-- MENU -->
 <nav class="menu">
-  <input type="checkbox" id="menu-toggle" class="menu__toggle">
-  
-  <label for="menu-toggle" class="menu__btn">
+  <button class="menu__btn" id="menuBtn" aria-label="Menu">
     <span class="menu__burger"></span>
-  </label>
+  </button>
 
-  <div class="menu__overlay"></div>
+  <div class="menu__overlay" id="menuOverlay"></div>
 
-  <ul class="menu__content">
+  <ul class="menu__content" id="menuContent">
     <li class="menu__item"><a class="menu__link" href="#home">HOME</a></li>
     <li class="menu__item"><a class="menu__link" href="#about">ABOUT</a></li>
     <li class="menu__item"><a class="menu__link" href="#works">WORKS</a></li>
@@ -125,5 +123,18 @@
         offset: 100
     });
 </script>
+    <script>
+  const menu = document.querySelector('.menu');
+  const btn = document.getElementById('menuBtn');
+  const overlay = document.getElementById('menuOverlay');
+
+  btn.addEventListener('click', () => {
+    menu.classList.toggle('is-open');
+  });
+
+  overlay.addEventListener('click', () => {
+    menu.classList.remove('is-open');
+  });
+    </script>
 </body>
 </html>
