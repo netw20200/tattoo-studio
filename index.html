@@ -53,16 +53,14 @@
 
 
     <section class="container container--big" id="works">
-        <div class="content">
-            <p>
-                <strong>Container going off screen?</strong>
-                <br>
-                No sweat
-            </p>
-        </div>
-
-        <div class="parallax" data-parallax-image="images/tattoo-process.jpg"></div>
-    </section>
+  <div class="works-section">
+    <h2 class="works-title" data-aos="fade-up">Works</h2>
+    <div class="works-grid" id="worksGrid">
+      <!-- карточки появятся сюда из CSV -->
+    </div>
+  </div>
+  <div class="parallax" data-parallax-image="images/tattoo-process.jpg"></div>
+</section>
 
 
     <section class="container container--full" id="contact">
@@ -143,5 +141,56 @@
     });
   });
 </script>
+    <script>
+  // Загрузка каталога из CSV
+  async function loadWorks() {
+    try {
+      const response = await fetch('products.csv');
+      const text = await response.text();
+      
+      const lines = text.trim().split('\n');
+      const headers = lines[0].split(',');
+      const grid = document.getElementById('worksGrid');
+      
+      lines.slice(1).forEach((line, index) => {
+        if (!line.trim()) return;
+        
+        // Простой парсер CSV (учитывает запятые внутри кавычек упрощённо)
+        const values = line.split(',');
+        const item = {
+          name: values[0]?.trim(),
+          image: values[1]?.trim(),
+          description: values[2]?.trim(),
+          category: values[3]?.trim()
+        };
+        
+        const card = document.createElement('div');
+        card.className = 'work-card';
+        card.setAttribute('data-aos', 'fade-up');
+        card.setAttribute('data-aos-delay', (index % 3) * 100);
+        
+        card.innerHTML = `
+          <img src="\( {item.image}" alt=" \){item.name}" loading="lazy">
+          <div class="work-card-body">
+            <span class="category">${item.category}</span>
+            <h3>${item.name}</h3>
+            <p>${item.description}</p>
+          </div>
+        `;
+        
+        grid.appendChild(card);
+      });
+      
+      // Обновляем AOS после добавления карточек
+      if (typeof AOS !== 'undefined') {
+        AOS.refresh();
+      }
+    } catch (err) {
+      console.error('Ошибка загрузки каталога:', err);
+    }
+  }
+  
+  loadWorks();
+                             </script>
 </body>
 </html>
