@@ -65,7 +65,7 @@ universal-parallax.js
 Replace files with the same names
 or change the paths in index.html.
 
-
+Demo images are for preview only. Replace them with your own before use.
 ----------------------------------------
   HOW TO CHANGE CONTACTS
 ----------------------------------------
